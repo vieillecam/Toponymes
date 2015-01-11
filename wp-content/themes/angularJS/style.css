@@ -7,7 +7,9 @@ Description: AngularJS WP theme for Topynmie Project
 Version: 1.0
 */
 
-body{ padding:0px; margin:0px; font-family:Arial, Helvetica, sans-serif; color:#888; font-size:13px;}
+/*body{ padding:0px; margin:0px; font-family:Arial, Helvetica, sans-serif; color:#888; font-size:13px;}
 .center{ width:1000px; margin: 0 auto;}
 a{ text-decoration:none; color:#888;}
-p{ line-height:19px;}
+p{ line-height:19px;}*/
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }

@@ -1,7 +1,7 @@
 // initialize the app
-var myapp = angular.module('myapp', []);
+var myapp = angular.module('myapp', ['ui.bootstrap']);
 
-// set the configuration
+// set the configuration 
 myapp.run(['$rootScope', function($rootScope){
   // the following data is fetched from the JavaScript variables created by wp_localize_script(), and stored in the Angular rootScope
   $rootScope.dir = BlogInfo.url;
@@ -39,3 +39,19 @@ myapp.controller('mycontroller', ['$scope', '$http', function($scope, $http) {
   });
 
 }]);
+
+myapp.controller('AlertDemoCtrl', function ($scope) {
+  $scope.alerts = [
+    { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
+    { type: 'success', msg: 'Well done! You successfully read this important alert message.' }
+  ];
+
+  $scope.addAlert = function() {
+    $scope.alerts.push({msg: 'Another alert!'});
+  };
+
+  $scope.closeAlert = function(index) {
+    $scope.alerts.splice(index, 1);
+  };
+});
+
