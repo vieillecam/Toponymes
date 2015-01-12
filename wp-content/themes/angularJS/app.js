@@ -1,5 +1,5 @@
 // initialize the app
-var myapp = angular.module('myapp', ['ui.bootstrap']);
+var myapp = angular.module('myapp', ['ui.bootstrap','leaflet-directive']);
 
 // set the configuration 
 myapp.run(['$rootScope', function($rootScope){
@@ -55,3 +55,10 @@ myapp.controller('AlertDemoCtrl', function ($scope) {
   };
 });
 
+myapp.controller("SimpleMapController", [ '$scope', function($scope) {
+    angular.extend($scope, {
+        defaults: {
+            scrollWheelZoom: false
+        }
+    });
+}]);
