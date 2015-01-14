@@ -59,6 +59,17 @@ myapp.controller("SimpleMapController", [ '$scope', function($scope) {
     angular.extend($scope, {
         defaults: {
             scrollWheelZoom: false
-        }
+        },
+        baselayers: {
+          cycle: {
+              name: 'OpenCycleMap',
+              type: 'xyz',
+              url: 'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
+              layerOptions: {
+                  subdomains: ['a', 'b', 'c'],
+                  attribution: '© OpenCycleMap contributors - © OpenStreetMap contributors',
+                  continuousWorld: true
+              }
+          }}
     });
 }]);
