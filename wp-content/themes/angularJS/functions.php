@@ -11,6 +11,7 @@ function mytheme_enqueue_scripts() {
   // on ajoute les fichiers CSS
   wp_register_style( 'bootstrap-css', '//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css', array(), null, false );
   wp_register_style( 'leaflet-css', '//cdn.leafletjs.com/leaflet-0.7.1/leaflet.css', array(), null, false );
+  wp_register_style( 'my-css', get_bloginfo('template_directory')."/style.css", array(), null, false );
   
 
 
@@ -24,6 +25,7 @@ function mytheme_enqueue_scripts() {
   // enqueue CSS  files
   wp_enqueue_style('bootstrap-css');
   wp_enqueue_style('leaflet-css');
+  wp_enqueue_style('my-css');
 
   // we need to create a JavaScript variable to store our API endpoint...   
   wp_localize_script( 'angular-core', 'AppAPI', array( 'url' => get_bloginfo('wpurl').'/wp-json/') ); // this is the API address of the JSON API plugin
