@@ -47,37 +47,44 @@ myapp.controller('mycontroller', ['$scope', '$http', function($scope, $http) {
         lng: -70.5556583404541,
         zoom: 14
       },
-      markers: {
-        osloMarker: {
-            lat: 59.91,
-            lng: 10.75,
-            message: "I want to travel here!",
-            focus: false,
-            draggable: false
-        }
-      },
+
       defaults: {
-          scrollWheelZoom: false
+          scrollWheelZoom: true
       },
       baselayers: {
-        cycle: {
-            name: 'OpenCycleMap',
+        // cycle: {
+        //     name: 'OpenCycleMap',
+        //     type: 'xyz',
+        //     // url: 'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
+        //     url: 'http://api.tiles.mapbox.com/v4/vieillecam.b02ce6b6/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoidmllaWxsZWNhbSIsImEiOiJhUU5DVV9BIn0.HsF74cv6xUJzwoRDkHPMjQ'
+        //     // layerOptions: {
+        //     //     subdomains: ['a', 'b', 'c'],
+        //     //     attribution: '© OpenCycleMap contributors - © OpenStreetMap contributors',
+        //     //     continuousWorld: true
+        //     // }
+        // }}
+        mapbox: {
+            name: 'Mapbox',
             type: 'xyz',
-            url: 'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
+            url: 'http://{s}.tiles.mapbox.com/v3/vieillecam.b02ce6b6/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoidmllaWxsZWNhbSIsImEiOiJhUU5DVV9BIn0.HsF74cv6xUJzwoRDkHPMjQ',
+            // url: 'http://api.tiles.mapbox.com/v4/vieillecam.b02ce6b6/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoidmllaWxsZWNhbSIsImEiOiJhUU5DVV9BIn0.HsF74cv6xUJzwoRDkHPMjQ',
             layerOptions: {
                 subdomains: ['a', 'b', 'c'],
-                attribution: '© OpenCycleMap contributors - © OpenStreetMap contributors',
                 continuousWorld: true
             }
         }}
   });
 
+  $scope.markers = new Array();
 
   function PlaceMarkers(){
     angular.forEach($scope.postdata, function(key, value){
-        $scope.marker = {"lat":key.meta.localisation.lat,"lng":key.meta.localisation.lng,"message":key.content};
-        //$scope.markers.add(marker);
-        console.log($scope.markers);
+        
+        $scope.markers.push({
+            lat: parseFloat(key.meta.localisation.lat),
+            lng: parseFloat(key.meta.localisation.lng),
+            message: key.content
+        });
     })
   }
 

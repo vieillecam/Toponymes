@@ -10,9 +10,45 @@ Version: 1.0
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
 
+.navbar{
+
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+
+* {
+  -webkit-border-radius: 0 !important;
+     -moz-border-radius: 0 !important;
+          border-radius: 0 !important;
+}
+
+.container-fluid {
+     padding-right: 0; /*15px in bootstrap.css*/
+     padding-left: 0;  /*idem*/
+     margin-right: auto;
+     margin-left: auto;
+}
+
 .angular-leaflet-map {
   height: 900px;
   width: 100%;
+}
+
+
+/*#homeDiv{
+  height: 900px;
+  width: 100%;
+}*/
+
+
+#greyPanel{
+
+	height: 900px;
+	width: 30%;
+	background-color: grey;
+	opacity: 0.8;
+	padding-left: 10%;
+	z-index: 2;
 }
 
 
