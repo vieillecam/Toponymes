@@ -14,6 +14,7 @@ Version: 1.0
 
 	padding-bottom: 0;
 	margin-bottom: 0;
+	z-index: 3;
 }
 
 * {
@@ -29,10 +30,11 @@ Version: 1.0
      margin-left: auto;
 }
 
-.angular-leaflet-map {
-  height: 900px;
+/*.angular-leaflet-map {
+  height: 100vh;
+  max-width:100vw;
   width: 100%;
-}
+}*/
 
 
 /*#homeDiv{
@@ -41,14 +43,33 @@ Version: 1.0
 }*/
 
 
-#greyPanel{
-
-	height: 900px;
-	width: 30%;
-	background-color: grey;
-	opacity: 0.8;
-	padding-left: 10%;
-	z-index: 2;
+#slide-panel {
+    position:relative;
+    z-index:2;
+    width:300px;
+    max-width:100vw;
+    height:100vh;
+    padding:0px;
+    background:grey;
+    opacity: 0.6;
+    margin-left:20px;
 }
 
+#map {
+    position:relative;
+    top:0px;
+    left:0px;
+    width: 100vw;
+    height: 50vh;
+    z-index:1;
+}
+
+/*#map {
+    position:absolute;
+    top:0px;
+    left:0px;
+    width: 100vw;
+    height: 90vh;
+    z-index:1;
+}*/
 

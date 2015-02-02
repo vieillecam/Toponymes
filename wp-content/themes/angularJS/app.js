@@ -10,7 +10,7 @@ myapp.run(['$rootScope', function($rootScope){
 }]);
 
 // add a controller
-myapp.controller('mycontroller', ['$scope', '$http', function($scope, $http) {
+myapp.controller('mycontroller', ['$scope', '$http', '$filter', function($scope, $http, $filter) {
   // load posts from the WordPress API
   $http({
     method: 'GET',
@@ -75,6 +75,18 @@ myapp.controller('mycontroller', ['$scope', '$http', function($scope, $http) {
         }}
   });
 
+  $scope.topo = {
+    title: "test",
+    content:"description",
+    date:"today",
+    author: {
+      nickname: "camille"
+    },
+    meta:{
+      photo1: "http://placehold.it/300"
+    }
+  };
+
   $scope.markers = new Array();
 
   function PlaceMarkers(){
@@ -83,10 +95,33 @@ myapp.controller('mycontroller', ['$scope', '$http', function($scope, $http) {
         $scope.markers.push({
             lat: parseFloat(key.meta.localisation.lat),
             lng: parseFloat(key.meta.localisation.lng),
-            message: key.content
+            message: key.content,
+            id: key.ID
         });
     })
   }
 
+  $scope.showdetails = function(markerID) {
+     var found = $filter('filter')($scope.postdata, {ID: markerID}, true);
+     if (found.length) {
+         $scope.topo = found[0];
+         $scope.topo.date = new Date(found[0].date).toLocaleDateString(); 
+         $scope.topo.content = $scope.topo.content.substr(3,$scope.topo.content.length - 8);
+     } else {
+         $scope.topo = 'Not found';
+     }
+  }
+
+  $scope.$on('leafletDirectiveMarker.click', function(e, args) {
+          // Args will contain the marker name and other relevant information
+          var marker = args.leafletEvent.target;
+          var id = marker.options.id;
+          $scope.showdetails(id);
+  }); 
+
 }]);
+
+
+
+
 
