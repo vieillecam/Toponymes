@@ -1,8 +1,8 @@
 // initialize the app
-var myapp = angular.module('myapp', ['ui.bootstrap','leaflet-directive']);
+var myapp = angular.module('myapp', ['ui.bootstrap', 'leaflet-directive']);
 
 // set the configuration 
-myapp.run(['$rootScope', function($rootScope){
+myapp.run(['$rootScope', function ($rootScope) {
   // the following data is fetched from the JavaScript variables created by wp_localize_script(), and stored in the Angular rootScope
   $rootScope.dir = BlogInfo.url;
   $rootScope.site = BlogInfo.site;
@@ -10,7 +10,7 @@ myapp.run(['$rootScope', function($rootScope){
 }]);
 
 // add a controller
-myapp.controller('mycontroller', ['$scope', '$http', '$filter', function($scope, $http, $filter) {
+myapp.controller('mycontroller', ['$scope', '$http', '$filter', function ($scope, $http, $filter) {
   // load posts from the WordPress API
   $http({
     method: 'GET',
@@ -19,14 +19,15 @@ myapp.controller('mycontroller', ['$scope', '$http', '$filter', function($scope,
       type: 'toponyme'
     }
   }).
-  success(function(data, status, headers, config) {
-    $scope.postdata = data;
+    success(function (data, status, headers, config) {
+      $scope.postdata = data;
 
-    PlaceMarkers();
+      PlaceMarkers();
 
-  }).
-  error(function(data, status, headers, config) {
-  });
+    }).
+    error(function (data, status, headers, config) {
+      console.log("Erreur dans la récupération des toponymes");
+    });
 
   $http({
     method: 'GET',
@@ -35,10 +36,11 @@ myapp.controller('mycontroller', ['$scope', '$http', '$filter', function($scope,
     //   json: 'get_posts'
     // }
   }).
-  success(function(data, status, headers, config) {
+  success(function (data, status, headers, config) {
     $scope.sitedata = data;
   }).
   error(function(data, status, headers, config) {
+    console.log("Erreur dans la récupération des infos du site");
   });
 
   angular.extend($scope, {
@@ -89,8 +91,8 @@ myapp.controller('mycontroller', ['$scope', '$http', '$filter', function($scope,
 
   $scope.markers = new Array();
 
-  function PlaceMarkers(){
-    angular.forEach($scope.postdata, function(key, value){
+  function PlaceMarkers() {
+    angular.forEach($scope.postdata, function (key, value){
         
         $scope.markers.push({
             lat: parseFloat(key.meta.localisation.lat),
@@ -101,18 +103,27 @@ myapp.controller('mycontroller', ['$scope', '$http', '$filter', function($scope,
     })
   }
 
-  $scope.showdetails = function(markerID) {
+
+  $scope.showdetails = function (markerID) {
      var found = $filter('filter')($scope.postdata, {ID: markerID}, true);
      if (found.length) {
          $scope.topo = found[0];
          $scope.topo.date = new Date(found[0].date).toLocaleDateString(); 
          $scope.topo.content = $scope.topo.content.substr(3,$scope.topo.content.length - 8);
+         $scope.topo.meta.photos = new Array();
+         $scope.topo.meta.photo1 != false ? $scope.topo.meta.photos.push($scope.topo.meta.photo1):null;
+         $scope.topo.meta.photo2 != false ? $scope.topo.meta.photos.push($scope.topo.meta.photo2):null;
+         $scope.topo.meta.photo3 != false ? $scope.topo.meta.photos.push($scope.topo.meta.photo3):null;
+         $scope.topo.meta.photo4 != false ? $scope.topo.meta.photos.push($scope.topo.meta.photo4):null;
+         $scope.topo.meta.photo5 != false ? $scope.topo.meta.photos.push($scope.topo.meta.photo5):null;
+
+         console.log($scope.topo.meta.photos);
      } else {
          $scope.topo = 'Not found';
      }
   }
 
-  $scope.$on('leafletDirectiveMarker.click', function(e, args) {
+  $scope.$on('leafletDirectiveMarker.click', function (e, args) {
           // Args will contain the marker name and other relevant information
           var marker = args.leafletEvent.target;
           var id = marker.options.id;

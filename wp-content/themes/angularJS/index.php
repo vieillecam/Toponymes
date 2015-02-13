@@ -57,9 +57,9 @@
 	</div>
 
 	<div class="ui card">
-	  <div class="image">
-	    <img ng-src="{{topo.meta.photo1}}">
-	  </div>
+		<div class="ui slide masked reveal image" ng-repeat="src in topo.meta.photos">
+			<img ng-src="{{ src }}"  class="hidden content">	    	
+		</div>
 	  <div class="content">
 	    <a class="header">{{topo.title}}</a>
 	    <div class="meta">
