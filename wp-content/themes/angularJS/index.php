@@ -58,7 +58,7 @@
 
 	<div class="ui card">
 	<div class="image">
-		<img ng-src="topo.meta.photos(0)" />
+		<img ng-src="topo.meta.photo1">
 	</div>
 
 <!-- 	<slick infinite="true" dots="true" arrows="true" data="topo.meta.photos" init-onload="true">

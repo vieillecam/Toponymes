@@ -116,8 +116,6 @@ myapp.controller('mycontroller', ['$scope', '$http', '$filter', function ($scope
          $scope.topo.meta.photo3 != false ? $scope.topo.meta.photos.push($scope.topo.meta.photo3):null;
          $scope.topo.meta.photo4 != false ? $scope.topo.meta.photos.push($scope.topo.meta.photo4):null;
          $scope.topo.meta.photo5 != false ? $scope.topo.meta.photos.push($scope.topo.meta.photo5):null;
-
-         console.log($scope.topo.meta.photos);
      } else {
          $scope.topo = 'Not found';
      }
