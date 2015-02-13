@@ -57,9 +57,27 @@
 	</div>
 
 	<div class="ui card">
-		<div class="ui slide masked reveal image" ng-repeat="src in topo.meta.photos">
-			<img ng-src="{{ src }}"  class="hidden content">	    	
-		</div>
+	<div class="image">
+		<img ng-src="topo.meta.photos(0)" />
+	</div>
+
+<!-- 	<slick infinite="true" dots="true" arrows="true" data="topo.meta.photos" init-onload="true">
+	   <div ng-repeat="photo in topo.meta.photos"> 
+	      <img ng-src="{{photo}}"  />
+	   </div>
+	</slick> -->
+<!-- 		<div class="image">
+			<slick dots="true">
+				<img src="http://dummyimage.com/800x600/4d494d/686a82.gif&text=placeholder+image" alt="placeholder+image">
+				<img src="http://dummyimage.com/800x600/4d494d/686a82.gif&text=placeholder+image" alt="placeholder+image">
+				<img src="http://dummyimage.com/800x600/4d494d/686a82.gif&text=placeholder+image" alt="placeholder+image">
+			</slick>
+		</div> -->
+
+<!-- 			   <div ng-repeat="img in topo.meta.photos"> 
+			      <img ng-src="{{img}}" />
+			   </div> -->
+
 	  <div class="content">
 	    <a class="header">{{topo.title}}</a>
 	    <div class="meta">

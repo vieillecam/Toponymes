@@ -1,5 +1,5 @@
 // initialize the app
-var myapp = angular.module('myapp', ['ui.bootstrap', 'leaflet-directive']);
+var myapp = angular.module('myapp', ['ui.bootstrap', 'leaflet-directive', 'slick']);
 
 // set the configuration 
 myapp.run(['$rootScope', function ($rootScope) {
