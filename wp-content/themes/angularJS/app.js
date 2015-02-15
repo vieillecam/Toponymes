@@ -51,7 +51,8 @@ myapp.controller('mycontroller', ['$scope', '$http', '$filter', function ($scope
       },
 
       defaults: {
-          scrollWheelZoom: true
+          scrollWheelZoom: true,
+          tileLayer: 'http://api.tiles.mapbox.com/v4/vieillecam.b02ce6b6/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoidmllaWxsZWNhbSIsImEiOiJhUU5DVV9BIn0.HsF74cv6xUJzwoRDkHPMjQ',
       },
       baselayers: {
         // cycle: {

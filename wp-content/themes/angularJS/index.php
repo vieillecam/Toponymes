@@ -52,7 +52,7 @@
 
 	<div class="row">
 		<div id="map" class="col-lg-12">
-			<leaflet markers="markers" center="center" class=".col-lg-12 .col-md-12 .col-sm-12 .col-xs-12" id="map"></leaflet>  
+			<leaflet markers="markers" center="center" defaults="defaults" class=".col-lg-12 .col-md-12 .col-sm-12 .col-xs-12" id="map"></leaflet>  
 		</div> 
 	</div>
 
