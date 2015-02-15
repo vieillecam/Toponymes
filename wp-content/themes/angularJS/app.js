@@ -111,6 +111,8 @@ myapp.controller('mycontroller', ['$scope', '$http', '$filter', function ($scope
          $scope.topo = found[0];
          $scope.topo.date = new Date(found[0].date).toLocaleDateString(); 
          $scope.topo.content = $scope.topo.content.substr(3,$scope.topo.content.length - 8);
+         $scope.topo.content = $scope.topo.content.replace(/&#8217;/g,'\'');
+         $scope.topo.title = $scope.topo.title.replace(/&#8217;/g,'\'');
          $scope.topo.meta.photos = new Array();
          $scope.topo.meta.photo1 != false ? $scope.topo.meta.photos.push($scope.topo.meta.photo1):null;
          $scope.topo.meta.photo2 != false ? $scope.topo.meta.photos.push($scope.topo.meta.photo2):null;
