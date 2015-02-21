@@ -54,6 +54,12 @@ myapp.controller('mycontroller', ['$scope', '$http', '$filter', function ($scope
           scrollWheelZoom: true,
           tileLayer: 'http://api.tiles.mapbox.com/v4/vieillecam.b02ce6b6/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoidmllaWxsZWNhbSIsImEiOiJhUU5DVV9BIn0.HsF74cv6xUJzwoRDkHPMjQ',
       },
+      events: {
+        map: {
+            enable: ['click'],
+            logic: 'emit'
+        }
+      },
       baselayers: {
         // cycle: {
         //     name: 'OpenCycleMap',
@@ -91,6 +97,11 @@ myapp.controller('mycontroller', ['$scope', '$http', '$filter', function ($scope
   };
 
   $scope.markers = new Array();
+  $scope.showDetails = false;
+
+  $scope.$on('leafletDirectiveMap.click', function(event){
+      $scope.showDetails = false;
+  });
 
   function PlaceMarkers() {
     angular.forEach($scope.postdata, function (key, value){
@@ -119,7 +130,9 @@ myapp.controller('mycontroller', ['$scope', '$http', '$filter', function ($scope
          $scope.topo.meta.photo3 != false ? $scope.topo.meta.photos.push($scope.topo.meta.photo3):null;
          $scope.topo.meta.photo4 != false ? $scope.topo.meta.photos.push($scope.topo.meta.photo4):null;
          $scope.topo.meta.photo5 != false ? $scope.topo.meta.photos.push($scope.topo.meta.photo5):null;
+         $scope.showDetails = true;
      } else {
+         $scope.showDetails = false;
          $scope.topo = 'Not found';
      }
   }
