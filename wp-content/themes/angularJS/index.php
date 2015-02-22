@@ -50,12 +50,8 @@
 
 	<div ng-controller="mycontroller">	
 
-	<div class="row">
-		<div id="map" class="col-lg-12">
-			<leaflet markers="markers" center="center" defaults="defaults" layers="layers" class=".col-lg-12 .col-md-12 .col-sm-12 .col-xs-12" id="map"></leaflet>  
-		</div> 
-	</div>
-
+  <md-sidenav md-component-id="right" class="md-sidenav-right md-whiteframe-z5">
+    
 	<div class="ui card" ng-if="showDetails">
 		<div class="image">
 			<img ng-src="{{topo.meta.photo1}}">
@@ -76,6 +72,14 @@
 	      {{topo.author.nickname}}
 	    </a>
 	  </div>
+	</div>
+
+  </md-sidenav>
+
+	<div class="row">
+		<div id="map" class="col-lg-12">
+			<leaflet markers="markers" center="center" defaults="defaults" layers="layers" class=".col-lg-12 .col-md-12 .col-sm-12 .col-xs-12" id="map"></leaflet>  
+		</div> 
 	</div>
 </div>
 

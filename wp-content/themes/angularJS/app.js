@@ -1,5 +1,5 @@
 // initialize the app
-var myapp = angular.module('myapp', ['ui.bootstrap', 'leaflet-directive', 'slick']);
+var myapp = angular.module('myapp', ['ui.bootstrap', 'leaflet-directive']);
 
 // set the configuration 
 myapp.run(['$rootScope', function ($rootScope) {
@@ -106,8 +106,6 @@ myapp.controller('mycontroller', ['$scope', '$http', '$filter','leafletData', fu
   });
 
   $scope.fitMarkersBounds = function(){
-
-    console.log($scope.layers.topopo['topo']);
     
     var bounds = [];
 
@@ -129,7 +127,7 @@ myapp.controller('mycontroller', ['$scope', '$http', '$filter','leafletData', fu
             //layer: 'topo',
             lat: parseFloat(key.meta.localisation.lat),
             lng: parseFloat(key.meta.localisation.lng),
-            message: key.content,
+            message: key.title,
             id: key.ID
         });
     })
