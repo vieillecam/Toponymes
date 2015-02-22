@@ -10,7 +10,7 @@ myapp.run(['$rootScope', function ($rootScope) {
 }]);
 
 // add a controller
-myapp.controller('mycontroller', ['$scope', '$http', '$filter', function ($scope, $http, $filter) {
+myapp.controller('mycontroller', ['$scope', '$http', '$filter','leafletData', function ($scope, $http, $filter, leafletData) {
   // load posts from the WordPress API
   $http({
     method: 'GET',
@@ -23,6 +23,7 @@ myapp.controller('mycontroller', ['$scope', '$http', '$filter', function ($scope
       $scope.postdata = data;
 
       PlaceMarkers();
+      $scope.fitMarkersBounds();
 
     }).
     error(function (data, status, headers, config) {
@@ -52,7 +53,6 @@ myapp.controller('mycontroller', ['$scope', '$http', '$filter', function ($scope
 
       defaults: {
           scrollWheelZoom: true,
-          tileLayer: 'http://api.tiles.mapbox.com/v4/vieillecam.b02ce6b6/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoidmllaWxsZWNhbSIsImEiOiJhUU5DVV9BIn0.HsF74cv6xUJzwoRDkHPMjQ',
       },
       events: {
         map: {
@@ -60,28 +60,30 @@ myapp.controller('mycontroller', ['$scope', '$http', '$filter', function ($scope
             logic: 'emit'
         }
       },
-      baselayers: {
-        // cycle: {
-        //     name: 'OpenCycleMap',
-        //     type: 'xyz',
-        //     // url: 'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
-        //     url: 'http://api.tiles.mapbox.com/v4/vieillecam.b02ce6b6/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoidmllaWxsZWNhbSIsImEiOiJhUU5DVV9BIn0.HsF74cv6xUJzwoRDkHPMjQ'
-        //     // layerOptions: {
-        //     //     subdomains: ['a', 'b', 'c'],
-        //     //     attribution: '© OpenCycleMap contributors - © OpenStreetMap contributors',
-        //     //     continuousWorld: true
-        //     // }
-        // }}
-        mapbox: {
-            name: 'Mapbox',
-            type: 'xyz',
-            url: 'http://{s}.tiles.mapbox.com/v3/vieillecam.b02ce6b6/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoidmllaWxsZWNhbSIsImEiOiJhUU5DVV9BIn0.HsF74cv6xUJzwoRDkHPMjQ',
-            // url: 'http://api.tiles.mapbox.com/v4/vieillecam.b02ce6b6/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoidmllaWxsZWNhbSIsImEiOiJhUU5DVV9BIn0.HsF74cv6xUJzwoRDkHPMjQ',
-            layerOptions: {
-                subdomains: ['a', 'b', 'c'],
-                continuousWorld: true
-            }
-        }}
+
+      layers:{
+
+        baselayers: {
+
+          mapbox: {
+              name: 'Mapbox',
+              type: 'xyz',
+              url: 'http://{s}.tiles.mapbox.com/v3/vieillecam.3d2d958b/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoidmllaWxsZWNhbSIsImEiOiJhUU5DVV9BIn0.HsF74cv6xUJzwoRDkHPMjQ',
+              layerOptions: {
+                  subdomains: ['a', 'b', 'c'],
+                  continuousWorld: true
+              }
+          }
+        },
+
+        topopo: {
+          topo: {
+            type: "group",
+            name: 'toponymes',
+            visible: false
+          }
+        }
+      }
   });
 
   $scope.topo = {
@@ -103,10 +105,28 @@ myapp.controller('mycontroller', ['$scope', '$http', '$filter', function ($scope
       $scope.showDetails = false;
   });
 
+  $scope.fitMarkersBounds = function(){
+
+    console.log($scope.layers.topopo['topo']);
+    
+    var bounds = [];
+
+    for (var i = 0; i < $scope.markers.length; i++) {
+      bounds.push([$scope.markers[i].lat, $scope.markers[i].lng])
+    }
+
+    leafletData.getMap().then(function(map) {
+        map.fitBounds(bounds);
+    });
+  }
+
+
   function PlaceMarkers() {
+
     angular.forEach($scope.postdata, function (key, value){
         
         $scope.markers.push({
+            //layer: 'topo',
             lat: parseFloat(key.meta.localisation.lat),
             lng: parseFloat(key.meta.localisation.lng),
             message: key.content,
