@@ -60,10 +60,19 @@ Version: 1.0
     top:0px;
     left:0px;
     width: 100vw;
-    height: 50vh;
+    height: 100vh;
     z-index:1;
 }
 
+#sidebar{
+
+	margin-top:52px;
+}
+
+.ui.card {
+
+	width: 100%;
+}
 /*#map {
     position:absolute;
     top:0px;

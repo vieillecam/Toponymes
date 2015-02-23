@@ -24,7 +24,7 @@
         Zoom : <input type="number" step="any" ng-model="center.zoom">
     </form> -->
 <div class="container-fluid">
-	<nav class="navbar navbar-inverse">
+	<nav class="navbar navbar-inverse" id="nav">
 	    <!-- Brand and toggle get grouped for better mobile display -->
 	    <div class="navbar-header">
 	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -50,7 +50,7 @@
 
 	<div ng-controller="mycontroller">	
 
-  <md-sidenav md-component-id="right" class="md-sidenav-right md-whiteframe-z5">
+  <md-sidenav md-component-id="right" class="md-sidenav-right md-whiteframe-z5" id="sidebar">
     
 	<div class="ui card" ng-if="showDetails">
 		<div class="image">
@@ -78,7 +78,7 @@
 
 	<div class="row">
 		<div id="map" class="col-lg-12">
-			<leaflet markers="markers" center="center" defaults="defaults" layers="layers" class=".col-lg-12 .col-md-12 .col-sm-12 .col-xs-12" id="map"></leaflet>  
+			<leaflet markers="markers" center="center" defaults="defaults" layers="layers" id="map"></leaflet>  
 		</div> 
 	</div>
 </div>
