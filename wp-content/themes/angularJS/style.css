@@ -55,24 +55,39 @@ Version: 1.0
     margin-left:20px;
 }
 
+html, body { 
+    height:100%
+}
 #map {
+    height: 100vh;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+} 
+/*#map {
     position:relative;
     top:0px;
     left:0px;
-    width: 70vw;
+    width: 60vw;
     height: 100vh;
     z-index:1;
-}
-
-#sidebar{
-
-	margin-top:52px;
-}
+}*/
 
 .ui.card {
 
 	width: 100%;
+	padding: 10px;
 }
+
+#sidenav {
+	box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.2);
+	background-color: white;
+	height: 100vh;	
+	padding-top: 15px;
+	padding-right: 30px;
+}
+
+
 /*#map {
     position:absolute;
     top:0px;

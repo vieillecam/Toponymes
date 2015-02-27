@@ -44,6 +44,7 @@
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
 	        <li><a href="#">Link</a></li>
+          </ul>
 	    </div><!-- /.navbar-collapse -->
 	</nav>
 
@@ -53,29 +54,32 @@
 			<leaflet markers="markers" center="center" defaults="defaults" layers="layers" id="map"></leaflet>  
 		</div> 
   		
-  		<div class="col-lg-4">
+		<div class="col-lg-4" id="sidenav">
+
+			<div class="present" ng-if="!showDetails">
+				<h1>Toponymie de fantaisie</h1>
+
+			</div>
 			<div class="ui card" ng-if="showDetails">
 				<div class="image">
 					<img ng-src="{{topo.meta.photo1}}">
 				</div>
 
-			  <div class="content">
-			    <a class="header">{{topo.title}}</a>
-			    <div class="meta">
-			      <span class="date">{{topo.date}}</span>
-			    </div>
-			    <div class="description">
-			      {{topo.content}}
-			    </div>
-			  </div>
-			  <div class="extra content">
-			    <a>
-			      <i class="user icon"></i>
-			      {{topo.author.nickname}}
-			    </a>
-			  </div>
+				<div class="content">
+					<a class="header">{{topo.title}}</a>
+					<div class="meta">
+						<span class="date">{{topo.date}}</span>
+					</div>
+					<div class="description">
+						{{topo.content}}
+					</div>
+					<div class="extra content">
+						<a><i class="user icon"></i>{{topo.author.nickname}}</a>
+					</div>
+				</div>
 			</div>
-  		</div>
+		</div>
+	</div>
 </div>
 
 
