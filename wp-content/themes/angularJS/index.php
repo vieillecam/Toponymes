@@ -48,39 +48,34 @@
 	</nav>
 
 
-	<div ng-controller="mycontroller">	
-
-  <md-sidenav md-component-id="right" class="md-sidenav-right md-whiteframe-z5" id="sidebar">
-    
-	<div class="ui card" ng-if="showDetails">
-		<div class="image">
-			<img ng-src="{{topo.meta.photo1}}">
-		</div>
-
-	  <div class="content">
-	    <a class="header">{{topo.title}}</a>
-	    <div class="meta">
-	      <span class="date">{{topo.date}}</span>
-	    </div>
-	    <div class="description">
-	      {{topo.content}}
-	    </div>
-	  </div>
-	  <div class="extra content">
-	    <a>
-	      <i class="user icon"></i>
-	      {{topo.author.nickname}}
-	    </a>
-	  </div>
-	</div>
-
-  </md-sidenav>
-
-	<div class="row">
-		<div id="map" class="col-lg-12">
+	<div ng-controller="mycontroller" class="row">	
+		<div id="map" class="col-lg-8">
 			<leaflet markers="markers" center="center" defaults="defaults" layers="layers" id="map"></leaflet>  
 		</div> 
-	</div>
+  		
+  		<div class="col-lg-4">
+			<div class="ui card" ng-if="showDetails">
+				<div class="image">
+					<img ng-src="{{topo.meta.photo1}}">
+				</div>
+
+			  <div class="content">
+			    <a class="header">{{topo.title}}</a>
+			    <div class="meta">
+			      <span class="date">{{topo.date}}</span>
+			    </div>
+			    <div class="description">
+			      {{topo.content}}
+			    </div>
+			  </div>
+			  <div class="extra content">
+			    <a>
+			      <i class="user icon"></i>
+			      {{topo.author.nickname}}
+			    </a>
+			  </div>
+			</div>
+  		</div>
 </div>
 
 
