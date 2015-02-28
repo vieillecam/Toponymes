@@ -69,7 +69,9 @@
 						{{topo.content}}
 					</div>
 					<div class="extra content">
-						<a><i class="user icon"></i>{{topo.author.nickname}}</a>
+					    <div class="right floated author">
+					      <img class="ui avatar image" src="{{topo.author.avatar}}"> {{topo.author.nickname}}
+					    </div>
 					</div>
 				</div>
 			</div>
