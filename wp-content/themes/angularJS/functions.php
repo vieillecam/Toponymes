@@ -20,6 +20,9 @@ function mytheme_enqueue_scripts() {
   wp_register_style( 'semanticCSS', get_bloginfo('template_directory')."/semantic.min.css", array(), null, false );
   wp_register_style( 'angular-material-css', get_bloginfo('template_directory')."/bower_components/angular-material/angular-material.min.css", array(), null, false );
   wp_register_style( 'my-css', get_bloginfo('template_directory')."/style.css", array(), null, false );
+
+  // Google Fonts  
+  wp_register_style( 'font-css-1', 'http://fonts.googleapis.com/css?family=Pacifico', array(), null, false );
   
 
 
@@ -40,6 +43,7 @@ function mytheme_enqueue_scripts() {
   wp_enqueue_style('leaflet-css');
   wp_enqueue_style('semanticCSS');
   wp_enqueue_style('angular-material-css');
+  wp_enqueue_style('font-css-1');
   wp_enqueue_style('my-css');
 
   // we need to create a JavaScript variable to store our API endpoint...   

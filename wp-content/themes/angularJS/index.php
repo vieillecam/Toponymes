@@ -27,24 +27,14 @@
 	<nav class="navbar navbar-inverse" id="nav">
 	    <!-- Brand and toggle get grouped for better mobile display -->
 	    <div class="navbar-header">
-	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-	        <span class="sr-only">Toggle navigation</span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	      </button>
 	      <a class="navbar-brand" href="#">Toponymie de fantaisie</a>
 	    </div>
 
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
-	        <li class="active"><a href="#">Accueil <span class="sr-only">(current)</span></a></li>
-	        <li><a href="#">Villes</a></li>
+	        <li class="active"><a href="#">Montmagny <span class="sr-only">(current)</span></a></li>
 	      </ul>
-	      <ul class="nav navbar-nav navbar-right">
-	        <li><a href="#">Link</a></li>
-          </ul>
 	    </div><!-- /.navbar-collapse -->
 	</nav>
 
@@ -56,10 +46,15 @@
   		
 		<div class="col-lg-4" id="sidenav">
 
-			<div class="present" ng-if="!showDetails">
-				<h1>Toponymie de fantaisie</h1>
+		<div class="jumbo" ng-if="!showDetails">
+			<div id="jumbo" class="jumbotron text-center" >
 
-			</div>
+				<h1>Toponymie de fantaisie</h1>
+				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+				<p><a class="btn btn-primary btn-lg" href="#" role="button">En savoir plus</a></p>
+			</div>			
+		</div>
+
 			<div class="ui card" ng-if="showDetails">
 				<div class="image">
 					<img ng-src="{{topo.meta.photo1}}">
@@ -81,8 +76,4 @@
 		</div>
 	</div>
 </div>
-
-
-
-
 <?php get_footer(); ?>
