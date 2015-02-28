@@ -56,6 +56,7 @@
 		</div>
 
 			<div class="ui card" ng-if="showDetails">
+
 				<div class="image">
 					<img ng-src="{{topo.meta.photo1}}">
 				</div>
@@ -63,7 +64,7 @@
 				<div class="content">
 					<a class="header">{{topo.title}}</a>
 					<div class="meta">
-						<span class="date">{{topo.date}}</span>
+						<span class="right floated date">{{topo.date}}</span>
 					</div>
 					<div class="description">
 						{{topo.content}}
@@ -75,6 +76,45 @@
 					</div>
 				</div>
 			</div>
+
+<!-- 			<div class="ui card" ng-if="showDetails">
+				<div class="content">
+					<a class="header">Témoignage 1</a>
+					<div class="meta">
+						<span class="right floated date">{{topo.date}}</span>
+					</div>
+					<div class="description">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+					</div>
+					<div class="extra content">
+					    <div class="right floated author">
+					      <img class="ui avatar image" src="{{topo.author.avatar}}"> Isabelle
+					    </div>
+					</div>
+				</div>
+			</div>
+
+			<div class="ui card" ng-if="showDetails">
+				<div class="content">
+					<a class="header">Témoignage 2</a>
+					<div class="meta">
+						<span class="right floated date">{{topo.date}}</span>
+					</div>
+					<div class="description">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+					</div>
+					<div class="extra content">
+					    <div class="right floated author">
+					      <img class="ui avatar image" src="{{topo.author.avatar}}"> Robert
+					    </div>
+					</div>
+				</div>
+			</div> -->
+
 		</div>
 	</div>
 </div>
