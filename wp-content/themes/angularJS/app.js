@@ -9,6 +9,7 @@ myapp.run(['$rootScope', function ($rootScope) {
   $rootScope.api = AppAPI.url;
 }]);
 
+
 // add a controller
 myapp.controller('mycontroller', ['$scope', '$http', '$filter','leafletData', function ($scope, $http, $filter, leafletData) {
   // load posts from the WordPress API
@@ -60,7 +61,14 @@ myapp.controller('mycontroller', ['$scope', '$http', '$filter','leafletData', fu
             logic: 'emit'
         }
       },
-
+      iconB: {
+        iconUrl: 'http://localhost/img/icon.png',
+        shadowUrl: 'http://localhost/img/icon_s.png',
+        iconSize:     [38, 95],
+          shadowSize:   [50, 64],
+          iconAnchor:   [22, 94],
+          shadowAnchor: [4, 62]
+      },
       layers:{
 
         baselayers: {
@@ -128,7 +136,8 @@ myapp.controller('mycontroller', ['$scope', '$http', '$filter','leafletData', fu
             lat: parseFloat(key.meta.localisation.lat),
             lng: parseFloat(key.meta.localisation.lng),
             message: key.title,
-            id: key.ID
+            id: key.ID,
+            icon: $scope.iconB
         });
     })
   }
