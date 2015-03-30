@@ -23,6 +23,12 @@ margin-left: -15px;
 .navbar{
 	margin-bottom: 0px;
 }
+
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+  margin-left: 0px;
+  margin-top: -10px;
+}
+
 .container-fluid {
      padding-right: 0; /*15px in bootstrap.css*/
      padding-left: 0;  /*idem*/
