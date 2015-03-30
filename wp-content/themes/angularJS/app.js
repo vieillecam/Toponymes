@@ -64,10 +64,11 @@ myapp.controller('mycontroller', ['$scope', '$http', '$filter','leafletData', fu
       iconB: {
         iconUrl: 'http://localhost/img/icon.png',
         shadowUrl: 'http://localhost/img/icon_s.png',
-        iconSize:     [38, 95],
-          shadowSize:   [50, 64],
-          iconAnchor:   [22, 94],
-          shadowAnchor: [4, 62]
+        iconSize:     [56, 90],
+          shadowSize:   [54, 49],
+          iconAnchor:   [20, 90],
+          shadowAnchor: [0, 49],
+          popupAnchor: [8,-85]
       },
       layers:{
 
